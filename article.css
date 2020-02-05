@@ -57,7 +57,11 @@ main.article {
     height: 26px;
 }
 
-.article {
+.gap.max {
+    grid-column: 1/6;
+}
+
+article {
     grid-column: 2 / 5;
     font-size: 22px;
     margin-bottom: 60px;
@@ -117,6 +121,7 @@ main.article {
 }
 
 .moreArticles {
+    height: auto;
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: minmax(0px, 1fr) minmax(120px, 1.6fr) 140px minmax(120px, 2.4fr) minmax(0px, 1fr);
@@ -175,6 +180,42 @@ main.article {
     display: flex;
     text-transform: uppercase;
     justify-content: space-between;
+}
+
+.smallArticles {
+    grid-column: 2 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px 0px 0px 0px;
+}
+
+.smallArticles > div {
+    width: 44%;
+}
+
+.listArticle {
+    border-left: 6px dotted #ececec;
+    padding: 0px 20px 0px 20px;
+    margin: 8px 0px 16px 0px;
+}
+
+.listArticle a {
+    font-size: 32px;
+}
+
+.listArticle p {
+    margin: 0px;
+}
+
+.listDek {
+    font-size: 22px;
+    font-style: italic;
+}
+
+.listByline {
+    opacity: .6;
+    text-transform: uppercase;
 }
 
 @media (min-width: 900px) {

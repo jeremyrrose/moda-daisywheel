@@ -225,7 +225,15 @@ header {
 
 /* Main content */
 
-main > section {
+main.article {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) minmax(120px, 2fr) 140px minmax(120px, 2fr) minmax(0px, 1fr);
+    grid-template-rows: repeat(3, 40px 300px 18px);
+    grid-auto-flow: dense;
+}
+
+main section.homebar {
     height: 320px;
     margin-bottom: 30px;
 }
@@ -234,6 +242,11 @@ main > section {
 
 .homebar {
     grid-template-rows: 40px auto;
+}
+
+.article .homebar.grid {
+    grid-column: 1/6;
+    margin-bottom: 0px;
 }
 
 .category {

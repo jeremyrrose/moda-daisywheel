@@ -1,5 +1,5 @@
 <?php 
-$api_url = "$api/articles/$article_id";
+$api_url = "$api/front/articles/$article_id";
 $curl = curl_init($api_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_HTTPHEADER, [
@@ -9,13 +9,15 @@ $response = curl_exec($curl);
 curl_close($curl);
 
 $article = json_decode($response);
+$image_url = json_decode($response)->image_url;
 $author = (isset($article->author) ? $article->author : null);
+$hero_class = isset($image_url) ? "" : " noHero";
 
-echo <<<ARTICLE_HEADER
+echo <<<ARTICLE
 <main class="article">
-        <div class="hero" style="background-image: url($article->image_url);">
+        <div class="hero$hero_class" style="background-image: url($image_url);">
             <div class="spacer pink"></div>
-            <div class="issue pink">$article->section_id</div>
+            <div class="issue pink">$article->section_title</div>
             <div class="spacer purple"></div>
             <div class="issue purple">$article->created_at</div>
             <div class="articleTitle teal">$article->title</div>
@@ -34,17 +36,26 @@ echo <<<ARTICLE_HEADER
             </section>
 
             <div>$article->content</div>
+ARTICLE;
 
-
+if (isset($author)) {
+    echo <<<AUTHOR
             <section class="author">
-                <p>$author->bio Jeremy Rose lives in Brooklyn, New York, with a three-legged cat and a lot of plants.</p>
+                <p>
+                    <span>$author->name</span><br>
+                    $author->bio
+                </p>
             </section>
-        </article>
-        <section class="spacer"></section>
+AUTHOR;
+}
 
+echo "</article><section class='spacer'></section>";
+
+if (isset($article->section_title)) {
+echo <<<MORE_ARTICLES
         <section class="moreArticles">
             <div class="spacer purple"></div>
-            <div class="more purple">Other articles in $article->section_id</div>
+            <div class="more purple">Other articles in $article->section_title</div>
             <div class="spacer purple"></div>
             <div class="gap"></div>
             <div class="gap"></div>
@@ -89,6 +100,7 @@ echo <<<ARTICLE_HEADER
             <div class="gap"></div>
 
         </section>
-    </main>
-ARTICLE_HEADER;
+MORE_ARTICLES;
+}
+echo "</main>";
 ?>

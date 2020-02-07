@@ -1,5 +1,6 @@
 <?php
-$api = 'https://daisywheel.herokuapp.com';
+$api = 'http://localhost:3000'; 
+// change to 'https://daisywheel.herokuapp.com'
 $api_url = "$api/front/magazines";
 $curl = curl_init($api_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -34,41 +35,28 @@ $colors = $zine->configuration->colors;
                     <img class="arrow" src="images/arrow.svg">
                 </div>
             </div>
-            <div class="submenu">
+
 <?php 
-foreach ($zine->menu->sections as $section) { 
+if (isset($zine->menu->sections[0])) {
+  echo "<div class='submenu'><h3>Sections</h3>";
+  foreach ($zine->menu->sections as $section) { 
     $link = "<a href='index.php?section=$section->url'>$section->title</a>"; 
     echo $link;
+  }
+  echo "</div>";
 }
-?>
-                <a href="category.html">Pulvinar</a>
-                <a href="category.html">Quisque</a>
-                <a href="category.html" class="subcat">Consequat</a>
-                <a href="category.html" class="subcat">Scelerisque</a>
-                <a href="category.html">Eget Lorem</a>
-                <a href="category.html" class="subcat">Posuere</a>
-                <a href="category.html" class="subcat">Morbi</a>
-                <a href="category.html" class="subcat">Tincidunt</a>
-            </div>
-            <div class="additionalMenu">
-<?php 
-foreach ($zine->menu->pages as $page) { 
-    $link = "<a href='index.php?article=$page->id'>$page->title</a>"; 
+if (isset($zine->menu->pages[0])) {
+  echo "<div class='additionalMenu'><h3>Information</h3>";
+  foreach ($zine->menu->pages as $page) { 
+    $link = "<a href='index.php?article=$page->url'>$page->title</a>"; 
     echo $link;
+  }
+  echo "</div>";
 }
 ?>
-                <a href="article.html">Ipsum Dolor</a>
-                <a href="article.html">Matrenum</a>
-                <a href="article.html">Ullamcorper</a>
-                <a href="article.html">Lectus</a>
-            </div>
             <div class="extraMenu">
                 <a href="index.php">Home</a>
                 <a href="index.php">Contact</a>
-            </div>
-            <div class="chillSidebar">
-                Feugiat:<br>
-                Phasellus morbi dapibus nisi urna, at iaculis elit maximus placerat. Donec sed semper ligula.
             </div>
         </div>
     </div>
@@ -84,14 +72,10 @@ foreach ($zine->menu->pages as $page) {
                 <div class="menuItems">
 <?php 
 foreach ($zine->menu->pages as $page) { 
-    $link = "<div><a href='index.php?article=$page->id'>$page->title</a></div>"; 
+    $link = "<div><a href='index.php?article=$page->url'>$page->title</a></div>"; 
     echo $link;
 }
 ?>
-                    <div><a href="category.html">Labore</a></div>
-                    <div><a href="category.html">Mentum</a></div>
-                    <div><a href="category.html">Lacus</a></div>
-                    <div><a href="category.html">Ultrices</a></div>
                 </div>
             </div>
         </header>
@@ -135,8 +119,11 @@ if (isset($_GET['article'])) {
                     </div>
                 </div>
                 <div class="footerBottom">
-                    <div class="bottomLogo">Mo<img src="images/DWhite.svg">A</div>
-                    <div>&copy; 2020 pellentesque nec nam aliquam</div>
+                    <div class="bottomLogo">
+                      Moda Reader View<br>
+                      <span>powered by <a href="http://github.com/jeremyrrose/daisywheel" target="_blank">Daisywheel CMS</a></span>
+                      </div>
+                    <div>&copy; 2020 <?php echo $zine->configuration->title ?></div>
                 </div>
             </section>
         </footer>

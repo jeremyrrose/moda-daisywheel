@@ -22,7 +22,7 @@ foreach ($sections as $key => $section) {
                     echo <<<FEATURE
                         <section class="homebar grid">
                             <div class="spacer purple"></div>
-                            <div class="category">$author // $article->created_at</div>
+                            <div class="category">$author // $article->publication_date</div>
                             <div class="photo right" style="background-image: url('$article->image_url');"></div>
                             <div class="spacer $color"></div>
                             <div class="title left $color"><a href="index.php?article=$article->id">$article->title</a></div>
@@ -32,7 +32,7 @@ FEATURE;
                     echo <<<FEATURE
                         <section class="homebar grid">
                             <div class="photo left" style="background-image: url('$article->image_url');"></div>
-                            <div class="category">$author // $article->created_at</div>
+                            <div class="category">$author // $article->publication_date</div>
                             <div class="spacer purple"></div>
                             <div class="title right $color"><a href="index.php?article=$article->id">$article->title</a></div>
                             <div class="spacer $color"></div>
@@ -72,8 +72,7 @@ FEATURE_HEAD;
                     <a href="index.php?article=$article->id">$article->title</a>
                     <p>$article->dek</p>
                     <div class="moreByline">
-                        <div>:: $author</div>
-                        <div>$article->created_at</div>
+                        <div>$author :: $article->publication_date</div>
                     </div>
                 </div>
                 <div class="spacer"></div>
@@ -106,7 +105,7 @@ LIST_HEAD;
             <div class='listArticle'>
             <a href='index.php?article=$article->id'>$article->title</a>
             <p class='listDek'>$article->dek</p>
-            <p class='listByline'>$author :: $article->created_at</p>
+            <p class='listByline'>$author :: $article->publication_date</p>
             </div>
 LIST_ARTICLE;
         }

@@ -16,6 +16,10 @@ main.article {
     transition: .8s;
 }
 
+.hero.noHero {
+    grid-template-rows: 2px 14vh 46px 46px;
+}
+
 .hero > .spacer.purple {
     grid-column: 1 / 1;
     grid-row: 4 / span 1;
@@ -86,6 +90,10 @@ article {
     color: #626289;
 }
 
+article div, article p {
+    margin: 0 0 22px 0;
+}
+
 .pull {
     width: 45%;
     float: right;
@@ -111,6 +119,10 @@ article {
     margin: 0;
     padding: 0 24px 0 20px;
     border-left: 4px dotted #bcbcbc;
+}
+
+.author p span {
+    text-transform: uppercase;
 }
 
 .author img {
@@ -142,6 +154,10 @@ article {
 .moreArticles.bigList .more {
     font-size: 42px;
     padding: 18px;
+}
+
+.moreArticles .more.small {
+    font-size: 26px;
 }
 
 .moreImage {
@@ -187,7 +203,7 @@ article {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 40px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 .smallArticles > div {

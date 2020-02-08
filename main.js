@@ -102,7 +102,7 @@ const menuToggle = () => {
 }
 
 // Event listeners
-logoClick.addEventListener('click', () => window.location.href = "/");
+logoClick.addEventListener('click', () => window.location.href = "index.php");
 
 menuBurgerDiv.addEventListener('click', menuToggle);
 menuBurgerDiv.addEventListener('mouseover',function () {

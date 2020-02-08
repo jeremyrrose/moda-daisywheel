@@ -1,6 +1,7 @@
 <?php
-$api = 'http://localhost:3000'; 
-// change to 'https://daisywheel.herokuapp.com'
+$remote_api = 'https://daisywheel.herokuapp.com';
+$local_api = 'http://localhost:3000';
+$api = $_SERVER['SERVER_NAME'] == 'localhost' ? $local_api : $remote_api;
 $api_url = "$api/front/magazines";
 $curl = curl_init($api_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

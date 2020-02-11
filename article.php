@@ -59,48 +59,30 @@ echo <<<MORE_ARTICLES
             <div class="spacer purple"></div>
             <div class="gap"></div>
             <div class="gap"></div>
-
-            <div class="spacer"></div>
-            <div class="moreImage yellow"></div>
-            <div class="moreInfo yellow">
-                <a href="article.html">Erat nam at lectus urna duis convallis convallis</a>
-                <p>Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Mi ipsum faucibus vitae aliquet nec.</p>
-                <div class="moreByline">
-                    <div>:: Pulvinar Elementum</div>
-                    <div>01/01/2020</div>
-                </div>
-            </div>
-            <div class="spacer"></div>
-            <div class="gap"></div>
-
-            <div class="spacer"></div>
-            <div class="moreImage teal"></div>
-            <div class="moreInfo teal">
-                <a href="article.html">Odio facilisis mauris sit amet massa</a>
-                <p>Morbi blandit cursus risus at ultrices mi tempus. Mattis enim ut tellus elementum sagittis vitae et leo duis.</p>
-                <div class="moreByline">
-                    <div>:: Lacinia Quis Vel</div>
-                    <div>01/01/2020</div>
-                </div>
-            </div>
-            <div class="spacer"></div>
-            <div class="gap"></div>
-
-            <div class="spacer"></div>
-            <div class="moreImage pink"></div>
-            <div class="moreInfo pink">
-                <a href="article.html">Neque laoreet suspendisse interdum consectetur libero</a>
-                <p>Tortor condimentum lacinia quis vel. Tincidunt tortor aliquam nulla facilisi cras. Rhoncus urna neque viverra justo nec ultrices dui sapien.</p>
-                <div class="moreByline">
-                    <div>:: Volutpat Commodo</div>
-                    <div>01/01/2020</div>
-                </div>
-            </div>
-            <div class="spacer"></div>
-            <div class="gap"></div>
-
-        </section>
 MORE_ARTICLES;
+
+    for ( $i = 0; $i < count($article->related); $i++) {
+        $rel_article = $article->related[$i];
+        $color = ($i == 0) ? 'yellow' : ($i == 1) ? 'teal' : 'pink';
+        // $color = 'teal';
+        $rel_article_author = $article->author->name;
+        echo <<<REL_ARTICLE
+            <div class="spacer"></div>
+            <div class="moreImage $color" style="background-image: url('$rel_article->image_url');"></div>
+            <div class="moreInfo $color">
+                <a href="index.php?article=$rel_article->id">$rel_article->title</a>
+                <p>$rel_article->dek</p>
+                <div class="moreByline">
+                    <div>:: $rel_article_author</div>
+                    <div>$rel_article->updated_at</div>
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="gap"></div>
+REL_ARTICLE;
+    }
+
+        echo "</section>";
 }
 echo "</main>";
 ?>

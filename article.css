@@ -68,8 +68,11 @@ main.article {
 article {
     grid-column: 2 / 5;
     font-size: 22px;
+    margin: 0 auto;
     margin-bottom: 60px;
     line-height: 1.8em;
+    max-width: 42em;
+    min-width: 30em;
 }
 
 .dek {

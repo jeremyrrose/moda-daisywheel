@@ -5,6 +5,7 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    overflow-x: hidden;
 }
 
 .grid {
@@ -158,13 +159,19 @@ header {
     overflow: visible;
     grid-column: 2 / span 1;
     margin-left: -6px;
-    font-size: 120px;
-    font-weight: 700;
-    line-height: .8em;
     letter-spacing: -.06em;
     background: #ffffff;
     transition: all .8s;
     cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+}
+
+.logo h1 {
+    font-size: 120px;
+    font-weight: 700;
+    line-height: .8em;
+    margin: 0px;
 }
 
 .subtitle {
@@ -174,7 +181,7 @@ header {
 .mobileBurger {
     display: none;
     position: relative;
-    top: -2px;
+    top: -8px;
 }
 
 .hollowD {
@@ -190,6 +197,7 @@ header {
     padding-top: 20px;
     top: 0;
     width: 100%;
+    z-index: 998;
 }
 
 .sticky + .subtitle {
@@ -482,6 +490,7 @@ label div {
 
     .menu {
         padding: 0px 6px 0px 6px;
+        display: none;
     }
 
     .menu.open {
@@ -495,7 +504,7 @@ label div {
     }
 
     .burgermenu {
-        width: 50%;
+        width: 60%;
     }
 
     .container, main {
@@ -513,9 +522,12 @@ label div {
     }
 
     .logo {
-        font-size: 100px;
         padding-left: 12px;
         margin-left: -6px;
+    }
+
+    .logo h1 {
+        font-size: 14vw;
     }
 
     .hollowD {
@@ -528,6 +540,8 @@ label div {
         display: inline;
         position: relative;
         z-index: 999;
+        width: 9vw;
+        margin-right: 3vw;
     }
 
     .hamburger {
@@ -544,6 +558,7 @@ label div {
 
     .subtitle {
         padding: 20px 4px 20px 4px;
+        display: none;
     }
 
     .title {
@@ -571,6 +586,10 @@ label div {
 }
 
 @media (max-width: 600px) {
+    .burgermenu {
+        width: 90%;
+    }
+
     .container, main {
         grid-template-columns: 6px minmax(120px, 2fr) 90px minmax(120px, 2fr) 6px;
     }
@@ -625,10 +644,43 @@ label div {
     .input > label {
         font-size: 16px;
     }
+
+    article {
+        min-width: auto;
+    }
 /*
 
     footer {
         grid-column: 1 / -1;
     } */
 
+}
+
+@media (max-width: 480px) {
+
+    .container, main {
+        max-width: 100%;
+        grid-template-columns: 4px minmax(80px, 2fr) 60px minmax(80px, 2fr) 4px;
+    }
+
+    .footerContent .input {
+        display: none;
+    }
+
+    .grid {
+        grid-template-columns: auto;
+    }
+
+    .submenu h3, .additionalMenu h3, .burgermenu > div > a {
+        font-size: 18px;
+    }
+
+    .burgermenu > div {
+        padding: 0px;
+    }
+
+    .sticky {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }

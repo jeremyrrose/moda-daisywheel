@@ -58,7 +58,9 @@ const menuToggle = () => {
     if (window.matchMedia("(max-width: 900px)").matches) {
         if (!burgerMenu.classList[1]) {
             document.body.classList.add('noScroll');
-            logo.classList.add('sticky');
+            logo.classList.add('sticky')
+            burgerMenu.style.top = `${logo.offsetHeight}px`;
+            logo.addEventListener('transitionend', () => burgerMenu.style.top = `${logo.offsetHeight}px`);
             burgerMenu.addEventListener('transitionend',() => opacitizer(menuItems, 0, 40));
             burgerMenu.classList.add('open');
             mainMenu.classList.add('open');

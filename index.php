@@ -65,7 +65,7 @@ if (isset($zine->menu->pages[0])) {
         <header class="grid">
             <div class="logo">
                 <img class="mobileBurger" src="images/hamburger.svg">
-                <span class="logoClick"><?php echo $zine->configuration->title ?></span>
+                <h1 class="logoClick"><?php echo $zine->configuration->title ?></h1>
             </div>
             <div class="subtitle"><?php echo $zine->configuration->description ?></div>
             <div class="menu">

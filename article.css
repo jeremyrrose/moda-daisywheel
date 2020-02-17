@@ -247,7 +247,7 @@ article div, article p {
 
 @media (max-width: 1200px) {
 
-    .moreArticles {
+    .moreArticles, .homebar, header.grid {
         grid-template-columns: 40px minmax(120px, 2fr) 140px minmax(120px, 2fr) 40px;
     }
     .hero {
@@ -260,9 +260,10 @@ article div, article p {
     article {
         padding-left: 12px;
         padding-right: 12px;
+        min-width: auto;
     }
 
-    .moreArticles {
+    .moreArticles, header.grid {
         grid-template-columns: 0px minmax(120px, 2fr) 140px minmax(120px, 2fr) 0px;
     }
 
@@ -276,6 +277,10 @@ article div, article p {
 
     .moreInfo p {
         font-size: 16px;
+    }
+
+    .moreImage {
+        min-height: 80px;
     }
 
     .moreArticles.bigList .more {
@@ -321,6 +326,19 @@ article div, article p {
 
 @media (max-width: 600px) {
 
+    article {
+        grid-column: 1/5;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        width: 94vw;
+        margin: 0;
+        min-width: auto;
+    }
+
+    main.article {
+        grid-template-columns: auto;
+    }
+
     .moreInfo p {
         display: none;
     }
@@ -329,4 +347,26 @@ article div, article p {
         flex-direction: column;
         padding-top: 10px;
     }
+
+    .hero {
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 50vh;
+    }
+
+    .moreArticles, header.grid {
+        grid-template-columns: 0px minmax(20px, .5fr) 30px minmax(20px, 2fr) 0px;
+    }
+
+    .footerContent, .footerBottom, .footerBottom .bottomLogo {
+        font-size: 20px;
+    }
+
+    .footerContent {
+        display: flex;
+        flex-direction: column;
+    }
+
 }

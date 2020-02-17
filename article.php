@@ -9,6 +9,7 @@ $response = curl_exec($curl);
 curl_close($curl);
 
 $article = json_decode($response);
+$date_info = date_parse_from_format("Y-n-jT", $article->updated_at);
 $image_url = json_decode($response)->image_url;
 $author = (isset($article->author) ? $article->author : null);
 $hero_class = isset($image_url) ? "" : " noHero";
@@ -19,7 +20,7 @@ echo <<<ARTICLE
             <div class="spacer pink"></div>
             <div class="issue pink">$article->section_title</div>
             <div class="spacer purple"></div>
-            <div class="issue purple">$article->created_at</div>
+            <div class="issue purple">$article->publication_date</div>
             <div class="articleTitle teal">$article->title</div>
             <div class="spacer teal"></div>
         </div>
@@ -32,7 +33,6 @@ echo <<<ARTICLE
             </section>
             <section class="byline">
                 <div>By <span>$author->name</span></div>
-                <div>01/01/2020 at 3:21 AM</div>
             </section>
 
             <div>$article->content</div>
@@ -66,6 +66,7 @@ MORE_ARTICLES;
         $color = ($i == 0) ? 'yellow' : ($i == 1) ? 'teal' : 'pink';
         // $color = 'teal';
         $rel_article_author = $article->author->name;
+        $date_info = date_parse_from_format("Y-n-jT", $article->updated_at);
         echo <<<REL_ARTICLE
             <div class="spacer"></div>
             <div class="moreImage $color" style="background-image: url('$rel_article->image_url');"></div>
@@ -74,7 +75,7 @@ MORE_ARTICLES;
                 <p>$rel_article->dek</p>
                 <div class="moreByline">
                     <div>:: $rel_article_author</div>
-                    <div>$rel_article->updated_at</div>
+                    <div>$date_info[month]-$date_info[day]-$date_info[year]</div>
                 </div>
             </div>
             <div class="spacer"></div>

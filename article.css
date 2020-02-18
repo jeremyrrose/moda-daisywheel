@@ -287,6 +287,26 @@ article div, article p {
         font-size: 34px;
     }
 
+    .smallArticles {
+        flex-direction: column;
+    }
+    
+    .smallArticles > div {
+        width: auto;
+    }
+
+    .listArticle {
+        font-size: 2vw;
+    }
+
+    .listArticle a {
+        font-size: 3.8vw;
+    }
+
+    .listDek {
+        font-size: 3vw;
+    }
+
     .hero {
         grid-template-columns: 0px minmax(40px, 1.6fr) 120px minmax(40px, 2.4fr) 0px;
         grid-template-rows: 24vh 10vh auto auto auto;
@@ -325,6 +345,22 @@ article div, article p {
 }
 
 @media (max-width: 600px) {
+
+    main .homebar.grid {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .homebar.grid .photo {
+        height: 30vh;
+    }
+
+    .homebar.grid .category {
+        order: -1;
+        font-size: 2.4vw;
+        padding: 1vw;
+    }
 
     article {
         grid-column: 1/5;
